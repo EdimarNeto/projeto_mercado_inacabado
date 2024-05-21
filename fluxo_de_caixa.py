@@ -9,7 +9,7 @@ def flux_ca():
         print('[2] - Adicionar Despesas')
         print('[0] - Finalizar')
 
-    def cad(tipo):
+    def cadastro(tipo):
         nome = str(input('Nome: ')).strip().upper()
         valor = float(input('Valor: '))
         if tipo == 2:
@@ -18,6 +18,7 @@ def flux_ca():
             'nome': nome,
             'valor': valor
         })
+        print('Receita salva com sucesso!')
 
     menu()
 
@@ -28,23 +29,25 @@ def flux_ca():
                 break
             else:
                 if opc == 1:
-                    cad(1)
+                    print('Adicionado Receitas:')
+                    cadastro(1)
                 elif opc == 2:
-                    cad(2)
+                    print('Adicionando Despesas:')
+                    cadastro(2)
         except ValueError:
             print('Opção Inválida.')
 
     # Nota Fiscal
     total = 0
-    for fc in fluxo_caixa:
-        print(f'Nome: {fc["nome"]:<3} --- Valor: R$ {fc["valor"]:.2f}')
-        total = total + fc["valor"]
+    for i in fluxo_caixa:
+        print(f'Nome: {i["nome"]:<3} --- Valor: R$ {i["valor"]:.2f}')
+        total = total + i["valor"]
 
-    print(f'Saldo atual: R$ {total}')
+    print(f'Saldo atual: R$ {total:.2f}')
 
-    print('Deseja imprimir comprovante?')
-    print('[1] Sim')
-    print('[2] não')
+    # print('Deseja imprimir comprovante?')
+    # print('[1] Sim')
+    # print('[2] não')
 
     # imp = int(input('>>> '))
     # if imp == 1:
